@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}  <!-- Load the static template tag -->
+{% block content %}
+<div class="flex justify-center mt-10">
+    <div class="bg-gray-100 rounded-lg shadow-lg">
+        <form method="post" enctype="multipart/form-data" class="p-4">
+            {% csrf_token %}
+
+            <!-- Conditional rendering of the profile image -->
+            <div class="flex justify-center mb-5">
+                {% if profile.image.url != 'profile_images/default.jpg' %}
+                    <img onclick="document.getElementById('imageUpload').click()" id="profileImage" style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" src="{{ profile.image.url }}" alt="Profile Image">
+                {% else %}
+                    <img onclick="document.getElementById('imageUpload').click()" id="profileImage" style="height: 100px; width: 100px; border-radius: 50%; object-fit: cover;" src="{% static 'path/to/default_image.jpg' %}" alt="Default Profile Image">
+                {% endif %}
+            </div>
+
+            <div class="mb-5">
+                <input type="file" name="image" id="imageUpload" accept="image/*" onchange="previewImage(event)" style="display: none;">
+                <!-- <button type="button" class="w-full m-2 p-2 bg-blue-500 text-white" onclick="document.getElementById('imageUpload').click();">Choose Image</button> -->
+            </div>
+
+            <div class="mb-5">
+                <label for="full_name" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Your Name</label>
+                {{ form.full_name }}
+            </div>
+
+            <div class="mb-5">
+                <label for="bio" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Your Email</label>
+                {{ form.email }}
+            </div>
+            <div class="mb-5">
+                <label for="bio" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Your Bio</label>
+                {{ form.bio }}
+            </div>
+
+            <div class="mb-5">
+                <label for="phone" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Your Phone</label>
+                {{ form.phone }}
+            </div>
+
+            <div class="mb-5 flex">
+                <input type="submit" value="Update" class="w-1/2 bg-green-500 m-2 p-2 text-white active:bg-red-600" />
+            
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+function previewImage(event) {
+    const image = document.getElementById('profileImage');
+    const file = event.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            // Use setAttribute to set the src
+            image.setAttribute('src', e.target.result);
+        };
+        reader.readAsDataURL(file);
+    }
+}
+
+</script>
+
+{% endblock content %}

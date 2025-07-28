@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex justify-center mt-10">
+<div class="bg-gray-100 w-1/5 rounded-lg shadow-lg ">
+    <form class="p-4"  method="post" class=" ml-1 border p-5  rounded-lg w-1/2"">
+    {% csrf_token %}
+      <div class="mb-5 ">
+          <label for="-ac-no" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Title</label>
+          {{form.title}}
+          
+      </div>
+
+      <div class="mb-5">
+          <input value="Create"  type="submit"  class="w-1/2 bg-green-500 p-2 text-white active:bg-red-600" />
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

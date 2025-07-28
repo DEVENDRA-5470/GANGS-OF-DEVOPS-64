@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Open Account{% endblock %}
+
+{% block content %}
+  <h2>🚀 Open a New Bank Account</h2>
+  <form method="POST" class="border p-4 rounded shadow w-25 m-auto">
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Mobile</label>
+      <input type="text" name="mobile" class="form-control" required>
+    </div>
+    <div class="mb-3">
+      <label>Initial Balance</label>
+      <input type="number" name="balance" step="0.01" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Create Account</button>
+  </form>
+{% endblock %}
