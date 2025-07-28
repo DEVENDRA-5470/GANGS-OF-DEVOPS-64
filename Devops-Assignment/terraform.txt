@@ -1,10 +1,8 @@
-Sure! Here's the **Beginner Level Terraform Assessments** explained in **simple English** for easy understanding.
+
 
 
 
 ## ✅ **Beginner Level Terraform Assessments (Simple English)**
-
-
 
 ### 🔹 **1. Launch an EC2 Instance (Free Tier)**
 
