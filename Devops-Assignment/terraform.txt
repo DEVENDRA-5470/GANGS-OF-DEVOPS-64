@@ -1,0 +1,100 @@
+
+
+
+
+## ✅ **Beginner Level Terraform Assessments (Simple English)**
+
+### 🔹 **1. Launch an EC2 Instance (Free Tier)**
+
+**🧠 Goal:**
+Use Terraform to launch a basic virtual server (EC2) on AWS using the free tier.
+
+**🧰 What you’ll do:**
+
+* Set up AWS as the cloud provider in Terraform
+* Use the `aws_instance` resource to create an EC2 instance
+* Use your own `.pem` key manually (to SSH into the instance)
+
+**📈 Expected Result:**
+
+* The EC2 instance is visible in the AWS Console
+* You can connect to it using SSH
+* Terraform should also show its public IP as output
+
+
+
+### 🔹 **2. Create an S3 Bucket**
+
+**🧠 Goal:**
+Use Terraform to create a cloud storage bucket (S3).
+
+**🧰 What you’ll do:**
+
+* Use `aws_s3_bucket` resource
+* Make sure the bucket name is globally unique
+* Enable versioning so older versions of files are saved
+
+**📈 Expected Result:**
+
+* S3 bucket is created and visible in AWS
+* Versioning is enabled in settings
+
+
+
+### 🔹 **3. Create a Security Group**
+
+**🧠 Goal:**
+Create a firewall (called a security group in AWS) that allows incoming traffic for:
+
+* SSH (port 22)
+* HTTP (port 80)
+
+**🧰 What you’ll do:**
+
+* Use `aws_security_group` resource
+* Add rules to allow SSH and HTTP access from your IP or anywhere
+
+**📈 Expected Result:**
+
+* When applied to EC2, you can access it via SSH and from a browser
+
+
+
+### 🔹 **4. Use Variables and Outputs**
+
+**🧠 Goal:**
+Make your Terraform code more dynamic and reusable.
+
+**🧰 What you’ll do:**
+
+* Create `variables.tf` to define inputs (like instance type, region, AMI ID)
+* Use `terraform.tfvars` to store actual values
+* Create `outputs.tf` to show values like EC2’s public IP after deployment
+
+**📈 Expected Result:**
+
+* Your code becomes cleaner and easier to update
+* Terraform shows the EC2 IP or name after deployment
+
+
+
+## 📁 Sample Folder Structure for Beginner Projects
+
+
+terraform-ec2-setup/
+├── main.tf            ← Main Terraform code
+├── variables.tf       ← All input variables
+├── outputs.tf         ← Show values like public IP
+├── terraform.tfvars   ← Actual values for variables
+└── provider.tf        ← AWS credentials and region
+
+
+### ✅ Tools You Need (Before You Start):
+
+| Tool                                                                           | Purpose                                 |
+|  |  |
+| [Terraform](https://www.terraform.io/downloads)                                | To write and run infrastructure as code |
+| [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html) | To configure your AWS access            |
+| AWS Free Tier Account                                                          | To deploy your infrastructure           |
+
+

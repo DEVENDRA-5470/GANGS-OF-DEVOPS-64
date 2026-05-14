@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex justify-center mt-10">
+    <div class="bg-gray-100 w-1/5 rounded-lg shadow-lg">
+        <div class="p-4">
+            <h2 class="text-lg font-semibold text-center mb-4">Stats</h2>
+            
+            <!-- Profile Data -->
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-black-900 dark:text-black">User</label>
+                <p class="text-sm text-black-700">{{ stats.profile.user.username }}</p>
+            </div>
+
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Total Downloads</label>
+                <p class="text-sm text-black-700">{{ stats.total_downloads }}</p>
+            </div>
+
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Topic Names</label>
+                <div class="text-sm text-black-700 h-32 overflow-y-auto p-2 border border-gray-300 rounded">
+                    {{ stats.topic_names }}
+                </div>
+            </div>
+            
+
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Total Logins</label>
+                <p class="text-sm text-black-700">{{ stats.total_logins }}</p>
+            </div>
+
+            <div class="mb-5">
+                <label class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Last Login</label>
+                <p class="text-sm text-black-700">{{ stats.last_login }}</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <h2>📋 All Bank Accounts</h2>
+  <table class="table table-bordered table-hover shadow-sm">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th><th>Name</th><th>Email</th><th>Mobile</th><th>Account No.</th><th>Balance</th><th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for acc in accounts %}
+      <tr>
+        <td>{{ acc[0] }}</td>
+        <td>{{ acc[1] }}</td>
+        <td>{{ acc[2] }}</td>
+        <td>{{ acc[3] }}</td>
+        <td>{{ acc[4] }}</td>
+        <td>₹ {{ acc[5] }}</td>
+        <td>{{ acc[6] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

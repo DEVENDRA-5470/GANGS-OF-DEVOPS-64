@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="text-gray-600 body-font">
+  <div class="justify-around mt-10 m-24 flex px-5 md:flex-row flex-col items-center">
+    <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+      <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcome to Dreamer Infotech
+        <br class="hidden lg:inline-block">
+      </h1>
+      <p class="mb-8 leading-relaxed">Here you find assignments on all topics related to web development, <br> data science, frontend, and more.
+      <div class="flex justify-center">
+        <button class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Button</button>
+        <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
+      </div>
+    </div>
+    <div class="lg:max-w-lg bg-gray-100 lg:w-full md:w-1/2 w-full rounded-lg shadow-lg">
+      <form class="p-6" action="{% url 'sign-up' %}" method="post" id="main" class="w-full border p-5 rounded-lg">
+        {% csrf_token %}
+        <div class="mb-5">
+          <label for="username" class="block mb-2 text-sm font-medium text-black-900"> Username</label>
+          <input type="text" name="username" id="username" class="shadow-sm bg-black-50 border border-black-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Ex.user123" required />
+        </div>
+        
+        <div class="mb-5">
+          <label for="first-name" class="block mb-2 text-sm font-medium text-black-900"> Full Name</label>
+          <input type="text" name="first-name" id="first-name" class="shadow-sm bg-black-50 border border-black-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter Full name" required />
+        </div>
+        <div class="mb-5">
+          <label for="email-id" class="block mb-2 text-sm font-medium text-black-900"> Email Address</label>
+          <input type="email" name="email-id" id="email-id" class="shadow-sm bg-black-50 border border-black-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Enter Email Id" required />
+        </div>
+        <div class="mb-5">
+          <label for="confirm-password" class="block mb-2 text-sm font-medium text-black-900"> Confirm Password</label>
+          <input name="confirm-password" type="password" id="confirm-password" class="shadow-sm bg-black-50 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Confirm Password" required />
+        </div>
+        <div class="mb-5">
+          <input value="Register" type="submit" class="w-full bg-green-500 py-2 text-white active:bg-red-600 rounded-lg cursor-pointer" />
+        </div>
+        <div class="text-center">
+          <a href="{% url 'sign-in' %}" class="text-blue-500 hover:underline">Login here</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+{% endblock content %}

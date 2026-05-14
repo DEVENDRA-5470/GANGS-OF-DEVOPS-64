@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="text-gray-600 body-font m-24 -mt-10">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Welcome to Dreamer Infotech
+          <br class="hidden lg:inline-block">
+        </h1>
+        <p class="mb-8 leading-relaxed">Here you find assignments on all topics related to web development, <br> data science, frontend, and more.
+        <div class="flex justify-center">
+          <button class="inline-flex text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Button</button>
+          <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
+        </div>
+      </div>
+      {% comment %} user form {% endcomment %}
+      <div class="lg:max-w-lg bg-gray-100 lg:w-full md:w-1/2 w-5/6 rounded-lg shadow-lg ">
+        <form class="p-4" action="{% url "sign-in" %}" method="post" id="main" class="w-full ml-1 border p-5  rounded-lg w-1/2"">
+        {% csrf_token %}
+          <div class="mb-5 ">
+              <label for="-ac-no" class="block mb-2 text-sm font-medium text-black-900 dark:text-black"> Username</label>
+              <input type="text" name="username" id="-ac-no" class="shadow-sm bg-black-50 border border-black-300 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-black-700 dark:border-black-600 dark:placeholder-black-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Enter username"/>
+          </div>
+    
+          <div class="mb-5">
+              <label for="-balance" class="block mb-2 text-sm font-medium text-black-900 dark:text-black"> Password</label>
+              <input name="password" type="text" id="-balance" class="shadow-sm bg-black-50 text-black-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:placeholder-black-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" placeholder="Confirm Password" required />
+          </div>
+          <div class="mb-5">
+              <input value="Login"  type="submit"  class="w-1/2 bg-green-500 p-2 text-white active:bg-red-600" />
+          </div>
+          <div class="text-center">
+            <a href="{% url 'home' %}" class="text-blue-500 hover:underline">Create new account</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+{% endblock content %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="flex justify-center mt-10">
+<div class="bg-gray-100 w-1/5 rounded-lg shadow-lg ">
+    <form class="p-4"  method="post" class=" ml-1 border p-5  rounded-lg w-1/2" enctype="multipart/form-data">
+    {% csrf_token %}
+      <div class="mb-5 ">
+          <label for="-ac-no" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Choose Category</label>
+          {{form.assignment}}
+          
+      </div>
+
+      <div class="mb-5 ">
+          <label for="-ac-no" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Topic Name</label>
+          {{form.topic_name}}
+          
+      </div>
+      <div class="mb-5 ">
+          <label for="-ac-no" class="block mb-2 text-sm font-medium text-black-900 dark:text-black">Choose Files</label>
+          {{form.pdf}}
+          
+      </div>
+
+      <div class="mb-5 flex ">
+          <input value="Add"  type="submit"  class="w-1/2 bg-green-500 m-2 p-2 text-white active:bg-red-600" />
+          <a href="{% url 'add-category' %}">
+          <input value="Add New Category"  type="button"  class="w-full m-2 p-2 bg-green-500 p-2 text-white active:bg-red-600" />
+          </a>
+      </div>
+      
+    </form>
+  </div>
+</div>
+
+{% endblock content %}

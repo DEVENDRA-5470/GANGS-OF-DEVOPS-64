@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section>
+
+    <div class="flex flex-wrap justify-center p-7 ">
+
+        <!-- HTML Topics Dropdown -->
+        {% for assignment in as1 %}
+        <div class="relative inline-block ml-5 mt-5 text-left">
+            <div>
+                <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-7 py-5 bg-white text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500" id="assignment-{{ assignment.id }}" aria-expanded="true" aria-haspopup="true">
+                    {{ assignment.title }}
+                    <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06 0L10 10.293l3.71-3.08a.75.75 0 111.06 1.06l-4 3.25a.75.75 0 01-1.06 0l-4-3.25a.75.75 0 010-1.06z" clip-rule="evenodd" />
+                    </svg>
+                </button>
+            </div>
+            <div class="absolute z-20 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" id="dropdown-{{ assignment.id }}">
+                {% for topic in assignment.topics.all %}
+                <div class="py-1 px-2" role="none">
+                    <!-- Call the form submission and download in one function -->
+                    <a href="{{ topic.pdf.url }}" download="{{ topic.pdf.name }}" class="block px-1 py-1 text-sm text-gray-700 hover:text-blue-600" onclick="submitAndDownload(event, '{{ topic.id }}')">{{ topic.topic_name }}</a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    
+    </div>
+
+</section>
+
+<section>
+    <div class="flex flex-wrap justify-center p-7">
+        {% for assignment in as1 %}
+            {% for topic in assignment.topics.all %}
+            <form id="hiddenForm-{{ topic.id }}" method="post" action="{% url 'stats' %}">
+                {% csrf_token %}
+                <input type="hidden" name="topic_name" value="{{ topic.topic_name }}">
+                <input type="hidden" name="assignment_id" value="{{ assignment.id }}">
+                <input type="hidden" name="topic_id" value="{{ topic.id }}">
+            </form>
+            {% endfor %}
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Script moved after the content -->
+<script defer>
+    function submitAndDownload(event, topicId) {
+        event.preventDefault(); // Prevent default link behavior
+        // Get the form and submit it
+        const form = document.getElementById('hiddenForm-' + topicId);
+        form.submit();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        {% for assignment in as1 %}
+        {
+            let buttonId = 'assignment-{{assignment.id}}';
+            let dropdownId = 'dropdown-{{assignment.id}}';
+
+            let button = document.getElementById(buttonId);
+            let dropdown = document.getElementById(dropdownId);
+            
+            if (button && dropdown) {
+                button.addEventListener('click', () => {
+                    dropdown.classList.toggle('hidden');
+                });
+            } 
+        }
+        {% endfor %}
+    });
+</script>
+
+{% endblock content %}

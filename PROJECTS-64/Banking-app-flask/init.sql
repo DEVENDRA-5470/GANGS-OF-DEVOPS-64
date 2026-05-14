@@ -1,0 +1,15 @@
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS accounts (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    mobile VARCHAR(20),
+    acc_number VARCHAR(20),
+    balance FLOAT,
+    created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
